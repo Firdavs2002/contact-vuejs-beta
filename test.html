@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./public/js/vue.js"></script>
+    <link rel="stylesheet" href="./public/css/bootstrap.css">
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+        }
+
+        /* #vue {
+            width: 100%;
+            height: 40vw;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        } */
+        .main {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="vue">
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button>
+        <div class="main">
+            <div class="a">
+                <button @click="addA">+</button>
+                <div v-for="(ar, index) in arr.ph">
+                    <button @click="delA" :id="index">del</button>
+                </div>
+            </div>
+            <div class="b">
+                <button @click="addB">+</button>
+                <div v-for="(ar, index) in arr.ad">
+                    <button @click="delB" :id="index">del</button>
+                </div>
+            </div>
+            <div class="c">
+                <button @click="addC">+</button>
+                <div v-for="(ar, index) in arr.em">{{ ar.em }}
+                    <button @click="delC" :id="index">del</button>
+                </div>
+            </div>
+        </div>
+        <p>
+            {{ arr }}
+        </p>
+        
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+    <script>
+        new Vue({
+            el: "#vue",
+            data: {
+                arr: {
+                    ph: [], ip: 0,
+                    ad: [], id: 0,
+                    em: [], im: 0,
+                },
+            },
+
+            methods: {
+                addA() {
+                    this.arr.ph.push(this.arr.ip++);
+                    this.refresh('ph');
+                },
+                delA(e) {
+                    this.arr.ph.splice(e.target.id, 1);
+                    this.arr.ip--;
+                    this.refresh('ph');
+                },
+                
+                addB() {
+                    this.arr.ad.push(this.arr.id++);
+                    this.refresh('ad');
+                },
+                delB(e) {
+                    this.arr.ad.splice(e.target.id, 1);
+                    this.arr.id--;
+                    this.refresh('ad');
+                },
+                addC() {
+                    this.arr.em.push(this.arr.im++);
+                    this.refresh('em');
+                },
+                delC(e) {
+                    this.arr.em.splice(e.target.id, 1);
+                    this.arr.im--;
+                    this.refresh('em');
+                },
+                refresh(t) {
+                    for (let i = 1; i <= this.arr[t]["length"]; i++) {
+                        this.arr[t][i-1] = i;
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="./public/js/jquery-3.3.1.min.js"></script>
+    <script src="./public/js/bootstrap.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+// const modalAdd = new Vue({
+    //     el: '#addContact',
+    //     data: {
+    //         nextId: 0,
+    //         contacts,
+            
+            
+    //         addInputs: {
+    //             phone: [], ip: 1,
+    //             address: [], id: 1,
+    //             email: [], im: 1,
+    //         },
+    //         contact: {}
+    //     },
+    //     methods: {
+    //         addInputPhone() {
+    //             this.addInputs.phone.push(++this.addInputs.ip);
+    //             this.refresh('phone');
+    //         },
+
+            // addInputAddress(){
+            //     this.addInputs.address.push(this.addInputs.id++);
+            //     this.refresh('address');
+            // },
+            // addInputEmail(){
+            //     this.addInputs.email.push(this.addInputs.im++);
+            //     this.refresh('email');
+            // },
+
+    //         delInputPhone(e) {
+    //             this.addInputs.phone.splice(e.target.id, 1);
+    //             this.addInputs.ip--;
+    //             this.refresh('phone');
+    //         },
+            
+    //         delInputAddress(e) {
+    //             this.addInputs.address.splice(e.target.id, 1);
+    //             this.addInputs.id--;
+    //             this.refresh('address');
+    //         },
+    //         delInputEmail(e) {
+    //             this.addInputs.email.splice(e.target.id, 1);
+    //             this.addInputs.im--;
+    //             this.refresh('email');
+    //         },
+
+    //         refresh(t) {
+    //             for (let i = 1; i <= this.addInputs[t]["length"]; i++) {
+    //                 this.addInputs[t][i-1] = i+1;
+    //             }
+    //         },
+
+    //         checkForm(e) {
+    //             const contact = {
+    //                 id: ++nextId,
+    //                 phones: [],
+    //                 addresses: [],
+    //                 emails: [],
+    //             };
+    //             const form = e.target;
+    //             var formData = new FormData(form);
+
+                
+    //             for(let input of formData.entries()) {
+    //                 if (input[0][0] == 'p') {
+    //                     contact.phones.push(input[1])
+    //                 }
+                    
+    //                 if (input[0][0] == 'a') {
+    //                     contact.addresses.push(input[1])
+    //                 }
+                    
+    //                 if (input[0][0] == 'e') {
+    //                     contact.emails.push(input[1])
+    //                 }
+                    
+    //                 console.log(input[0], input[1]); //Выведет в консоль всю форму в виде "КЛЮЧ ЗНАЧЕНИЕ"
+    //             }
+    //             console.log(contact);
+    //             this.contacts.push(contact);
+    //             console.log(this.contacts);
+    //             form.reset();
+                
+    //             // this.addInputs = {
+    //             //     phone: [], ip: 0,
+    //             //     address: [], id: 0,
+    //             //     email: [], im: 0,
+    //             // }
+    //             e.preventDefault();
+    //         }
+    //     }
+    // });
+
+    // const modalEdit = new Vue({
+    //     el: '#editContact',
+    //     data: {
+    //         editer: false,
+    //         idContact: 0,
+    //         contacts,
+    //         contact: {},
+    //         addInputs: modalAdd.addInputs
+    //     },
+    //     methods: {
+            // addInputPhone() {
+            //     // this.addInputs.phone.push(++this.addInputs.ip);
+            //     this.contact.phones.push('');
+            //     // this.refresh('phone');
+            // },
+
+    //         addInputAddress(){
+    //             this.addInputs.address.push(this.addInputs.id++);
+    //             this.refresh('address');
+    //         },
+    //         addInputEmail(){
+    //             this.addInputs.email.push(this.addInputs.im++);
+    //             this.refresh('email');
+    //         },
+
+    //         delInputPhone(e) {
+    //             console.log(e.target.id);
+    //             // this.addInputs.phone.splice(e.target.id, 1);
+    //             this.contact.phones.splice(e.target.id, 1);
+    //             // this.addInputs.ip--;
+    //             // this.refresh('phone');
+    //         },
+            
+    //         delInputAddress(e) {
+    //             this.addInputs.address.splice(e.target.id, 1);
+    //             this.addInputs.id--;
+    //             this.refresh('address');
+    //         },
+    //         delInputEmail(e) {
+    //             this.addInputs.email.splice(e.target.id, 1);
+    //             this.addInputs.im--;
+    //             this.refresh('email');
+    //         },
+
+    //         refresh(t) {
+    //             for (let i = 1; i <= this.addInputs[t]["length"]; i++) {
+    //                 this.addInputs[t][i-1] = i+1;
+    //             }
+    //         },
+            // checkEdit(e) {
+
+            //     const contact = {
+            //         id: this.idContact,
+            //         phones: [],
+            //         addresses: [],
+            //         emails: [],
+            //     };
+
+            //     const form = e.target;
+            //     var formData = new FormData(form);
+                
+            //     for(let input of formData.entries()) {
+            //         if (input[0][0] == 'p') {
+            //             contact.phones.push(input[1])
+            //         }
+                    
+            //         if (input[0][0] == 'a') {
+            //             contact.addresses.push(input[1])
+            //         }
+                    
+            //         if (input[0][0] == 'e') {
+            //             contact.emails.push(input[1])
+            //         }
+                    
+            //         console.log(input[0], input[1]); //Выведет в консоль всю форму в виде "КЛЮЧ ЗНАЧЕНИЕ"
+            //     }
+            //     console.log(contact);
+            //     arr.push(contact);
+            //     this.contacts[contact.id-1] = contact
+            //     this.editer = true;
+            //     console.log(this.editer);
+            //     console.log(this.contacts);
+            //     e.preventDefault();
+            // }
+
+    //     }
+    // });

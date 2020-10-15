@@ -1,0 +1,48 @@
+body > .container {
+  margin-top: 20px;
+}
+
+.header {
+  background: #333;
+  padding: 20px;
+  border-radius: 5px 5px 0 0;
+}
+
+form.form-contact {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-contact .form-group {
+  flex: 1 80%;
+  display: flex;
+  margin: 10px 0;
+}
+
+.form-contact .form-group input {
+  width: 95%;
+}
+
+.form-contact button {
+  flex: 1 5%;
+}
+
+.plus, .del {
+  margin-left: 10px;
+}
+
+.modal-footer {
+  justify-content: space-between;
+}
+
+button.dropdown-toggle {
+  background: transparent;
+  border: none;
+
+}
+
+button.dropdown-toggle::after {
+  display: none;
+}
