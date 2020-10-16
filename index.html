@@ -54,7 +54,7 @@
 
 <body>
     <div id="vue">
-        <div class="container">
+        <div class="container mt-2">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="header">
@@ -78,7 +78,6 @@
                                 <th scope="col">Адрес</th>
                                 <th scope="col" colspan="2" v-if="contacts.length > 0">Email</th>
                                 <th scope="col" v-else="">Email</th>
-                                
                             </tr>
                         </thead>
                         <tbody>
@@ -104,14 +103,15 @@
                 </div>
             </div>
         </div>
-        {{ contacts }}
     <div class="modal fade" id="addContact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-md">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Добавление нового контакта</h5>
               <button type="button" class="close btn btn-secondary" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true">
+                    <i class="fa fa-times"></i>
+                </span>
               </button>
             </div>
             <div class="modal-body">
@@ -119,11 +119,11 @@
                     <div class="telephones" style="width: 100%;">
 
                         <!-- <template v-if="isEdit"> -->
-                            <div class="form-group"> <!-- проверка формы -->
+                            <div class="form-group form-modal"> <!-- проверка формы -->
                                 <input type="text" class="form-control" name="phone" placeholder="телефон" required>
                                 <button type="button" class="btn btn-primary plus" id="btn-phone" @click="addInputPhone">+</button>
                             </div>
-                            <div class="form-group fade-enter-active" v-for="(add, index) in addInputs.phone"> <!-- цикл -->
+                            <div class="form-group form-modal fade-enter-active" v-for="(add, index) in addInputs.phone"> <!-- цикл -->
                                 <input type="text" class="form-control " name="phone" :placeholder="'телефон ' + add" required>
                                 <button type="button" class="btn btn-danger plus" @click="delNewInputPhone">
                                     <i class="fa fa-trash"></i>
@@ -132,11 +132,11 @@
                         
                     </div>
                     <div class="addresses" style="width: 100%;">
-                        <div class="form-group"> <!-- проверка формы -->
+                        <div class="form-group form-modal"> <!-- проверка формы -->
                             <input type="text" class="form-control" name="address" placeholder="адрес" required>
                             <button type="button" class="btn btn-primary plus" id="btn-address" @click="addInputAddress">+</button>
                         </div>
-                        <div class="form-group fade-enter-active" v-for="(add, index) in addInputs.address"> <!-- цикл -->
+                        <div class="form-group form-modal fade-enter-active" v-for="(add, index) in addInputs.address"> <!-- цикл -->
                             <input type="text" class="form-control " name="address" :placeholder="'адрес ' + add" required>
                             <button type="button" class="btn btn-danger plus" @click="delNewInputAddress">
                                 <i class="fa fa-trash"></i>
@@ -144,11 +144,11 @@
                         </div>
                     </div>
                     <div class="emails" style="width: 100%">
-                        <div class="form-group"> <!-- проверка формы -->
+                        <div class="form-group form-modal"> <!-- проверка формы -->
                             <input type="text" class="form-control" name="email" placeholder="email" required>
                             <button type="button" class="btn btn-primary plus" id="btn-email" @click="addInputEmail">+</button>
                         </div>
-                        <div class="form-group fade-enter-active" v-for="(add, index) in addInputs.email"> <!-- цикл -->
+                        <div class="form-group form-modal fade-enter-active" v-for="(add, index) in addInputs.email"> <!-- цикл -->
                             <input type="text" class="form-control " name="email" :placeholder="'email ' + add" required>
                             <button type="button" class="btn btn-danger plus" @click="delNewInputEmail">
                                 <i class="fa fa-trash"></i>
@@ -159,9 +159,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <label for="add" class="btn btn-success">
-                    добавить <i class="fa fa-user-plus"></i>
+                    Добавить <i class="fa fa-user-plus"></i>
                 </label>
             </div>
           </div>
@@ -171,15 +170,17 @@
         <div class="modal-dialog modal-md">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Edit contact</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Изменение контакта</h5>
               <button type="button" class="close btn btn-secondary" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                <span aria-hidden="true">
+                    <i class="fa fa-times"></i>
+                </span>
               </button>
             </div>
             <div class="modal-body">
                 <form class="form-contact add" method="POST" @submit="checkEdit">
                     <div class="telephones" style="width: 100%;">
-                        <div class="form-group fade-enter-active" v-for="(add, index) in contact.phones"> 
+                        <div class="form-group form-modal fade-enter-active" v-for="(add, index) in contact.phones"> 
                             <input type="text" :value="contact.phones[index]" class="form-control" name="phone" placeholder="телефон" required>
                             <button type="button" class="btn btn-primary plus"
                                                 id="btn-phone"
@@ -194,7 +195,7 @@
                         </div>
                     </div>
                     <div class="addresses" style="width: 100%;">
-                        <div class="form-group fade-enter-active" v-for="(add, index) in contact.addresses"> 
+                        <div class="form-group form-modal fade-enter-active" v-for="(add, index) in contact.addresses"> 
                             <input type="text" :value="contact.addresses[index]" class="form-control" name="address" placeholder="address" required>
                             <button type="button" class="btn btn-primary plus"
                                                 id="btn-address"
@@ -209,7 +210,7 @@
                         </div>
                     </div>
                     <div class="emails" style="width: 100%">
-                        <div class="form-group fade-enter-active" v-for="(add, index) in contact.emails"> 
+                        <div class="form-group form-modal fade-enter-active" v-for="(add, index) in contact.emails"> 
                             <input type="text" :value="contact.emails[index]" class="form-control" name="email" placeholder="email" required>
                             <button type="button" class="btn btn-primary plus"
                                                 id="btn-emails"

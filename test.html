@@ -127,192 +127,187 @@
     </script>
     <script src="./public/js/jquery-3.3.1.min.js"></script>
     <script src="./public/js/bootstrap.js"></script>
+    <script>
+        // const modalAdd = new Vue({
+            //     el: '#addContact',
+            //     data: {
+            //         nextId: 0,
+            //         contacts,
+                    
+                    
+            //         addInputs: {
+            //             phone: [], ip: 1,
+            //             address: [], id: 1,
+            //             email: [], im: 1,
+            //         },
+            //         contact: {}
+            //     },
+            //     methods: {
+            //         addInputPhone() {
+            //             this.addInputs.phone.push(++this.addInputs.ip);
+            //             this.refresh('phone');
+            //         },
+
+                    // addInputAddress(){
+                    //     this.addInputs.address.push(this.addInputs.id++);
+                    //     this.refresh('address');
+                    // },
+                    // addInputEmail(){
+                    //     this.addInputs.email.push(this.addInputs.im++);
+                    //     this.refresh('email');
+                    // },
+
+            //         delInputPhone(e) {
+            //             this.addInputs.phone.splice(e.target.id, 1);
+            //             this.addInputs.ip--;
+            //             this.refresh('phone');
+            //         },
+                    
+            //         delInputAddress(e) {
+            //             this.addInputs.address.splice(e.target.id, 1);
+            //             this.addInputs.id--;
+            //             this.refresh('address');
+            //         },
+            //         delInputEmail(e) {
+            //             this.addInputs.email.splice(e.target.id, 1);
+            //             this.addInputs.im--;
+            //             this.refresh('email');
+            //         },
+
+            //         refresh(t) {
+            //             for (let i = 1; i <= this.addInputs[t]["length"]; i++) {
+            //                 this.addInputs[t][i-1] = i+1;
+            //             }
+            //         },
+
+            //         checkForm(e) {
+            //             const contact = {
+            //                 id: ++nextId,
+            //                 phones: [],
+            //                 addresses: [],
+            //                 emails: [],
+            //             };
+            //             const form = e.target;
+            //             var formData = new FormData(form);
+
+                        
+            //             for(let input of formData.entries()) {
+            //                 if (input[0][0] == 'p') {
+            //                     contact.phones.push(input[1])
+            //                 }
+                            
+            //                 if (input[0][0] == 'a') {
+            //                     contact.addresses.push(input[1])
+            //                 }
+                            
+            //                 if (input[0][0] == 'e') {
+            //                     contact.emails.push(input[1])
+            //                 }
+                            
+            //                 console.log(input[0], input[1]); //Выведет в консоль всю форму в виде "КЛЮЧ ЗНАЧЕНИЕ"
+            //             }
+            //             console.log(contact);
+            //             this.contacts.push(contact);
+            //             console.log(this.contacts);
+            //             form.reset();
+                        
+            //             // this.addInputs = {
+            //             //     phone: [], ip: 0,
+            //             //     address: [], id: 0,
+            //             //     email: [], im: 0,
+            //             // }
+            //             e.preventDefault();
+            //         }
+            //     }
+            // });
+
+            // const modalEdit = new Vue({
+            //     el: '#editContact',
+            //     data: {
+            //         editer: false,
+            //         idContact: 0,
+            //         contacts,
+            //         contact: {},
+            //         addInputs: modalAdd.addInputs
+            //     },
+            //     methods: {
+                    // addInputPhone() {
+                    //     // this.addInputs.phone.push(++this.addInputs.ip);
+                    //     this.contact.phones.push('');
+                    //     // this.refresh('phone');
+                    // },
+
+            //         addInputAddress(){
+            //             this.addInputs.address.push(this.addInputs.id++);
+            //             this.refresh('address');
+            //         },
+            //         addInputEmail(){
+            //             this.addInputs.email.push(this.addInputs.im++);
+            //             this.refresh('email');
+            //         },
+
+            //         delInputPhone(e) {
+            //             console.log(e.target.id);
+            //             // this.addInputs.phone.splice(e.target.id, 1);
+            //             this.contact.phones.splice(e.target.id, 1);
+            //             // this.addInputs.ip--;
+            //             // this.refresh('phone');
+            //         },
+                    
+            //         delInputAddress(e) {
+            //             this.addInputs.address.splice(e.target.id, 1);
+            //             this.addInputs.id--;
+            //             this.refresh('address');
+            //         },
+            //         delInputEmail(e) {
+            //             this.addInputs.email.splice(e.target.id, 1);
+            //             this.addInputs.im--;
+            //             this.refresh('email');
+            //         },
+
+            //         refresh(t) {
+            //             for (let i = 1; i <= this.addInputs[t]["length"]; i++) {
+            //                 this.addInputs[t][i-1] = i+1;
+            //             }
+            //         },
+                    // checkEdit(e) {
+
+                    //     const contact = {
+                    //         id: this.idContact,
+                    //         phones: [],
+                    //         addresses: [],
+                    //         emails: [],
+                    //     };
+
+                    //     const form = e.target;
+                    //     var formData = new FormData(form);
+                        
+                    //     for(let input of formData.entries()) {
+                    //         if (input[0][0] == 'p') {
+                    //             contact.phones.push(input[1])
+                    //         }
+                            
+                    //         if (input[0][0] == 'a') {
+                    //             contact.addresses.push(input[1])
+                    //         }
+                            
+                    //         if (input[0][0] == 'e') {
+                    //             contact.emails.push(input[1])
+                    //         }
+                            
+                    //         console.log(input[0], input[1]); //Выведет в консоль всю форму в виде "КЛЮЧ ЗНАЧЕНИЕ"
+                    //     }
+                    //     console.log(contact);
+                    //     arr.push(contact);
+                    //     this.contacts[contact.id-1] = contact
+                    //     this.editer = true;
+                    //     console.log(this.editer);
+                    //     console.log(this.contacts);
+                    //     e.preventDefault();
+                    // }
+
+            //     }
+            // });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-// const modalAdd = new Vue({
-    //     el: '#addContact',
-    //     data: {
-    //         nextId: 0,
-    //         contacts,
-            
-            
-    //         addInputs: {
-    //             phone: [], ip: 1,
-    //             address: [], id: 1,
-    //             email: [], im: 1,
-    //         },
-    //         contact: {}
-    //     },
-    //     methods: {
-    //         addInputPhone() {
-    //             this.addInputs.phone.push(++this.addInputs.ip);
-    //             this.refresh('phone');
-    //         },
-
-            // addInputAddress(){
-            //     this.addInputs.address.push(this.addInputs.id++);
-            //     this.refresh('address');
-            // },
-            // addInputEmail(){
-            //     this.addInputs.email.push(this.addInputs.im++);
-            //     this.refresh('email');
-            // },
-
-    //         delInputPhone(e) {
-    //             this.addInputs.phone.splice(e.target.id, 1);
-    //             this.addInputs.ip--;
-    //             this.refresh('phone');
-    //         },
-            
-    //         delInputAddress(e) {
-    //             this.addInputs.address.splice(e.target.id, 1);
-    //             this.addInputs.id--;
-    //             this.refresh('address');
-    //         },
-    //         delInputEmail(e) {
-    //             this.addInputs.email.splice(e.target.id, 1);
-    //             this.addInputs.im--;
-    //             this.refresh('email');
-    //         },
-
-    //         refresh(t) {
-    //             for (let i = 1; i <= this.addInputs[t]["length"]; i++) {
-    //                 this.addInputs[t][i-1] = i+1;
-    //             }
-    //         },
-
-    //         checkForm(e) {
-    //             const contact = {
-    //                 id: ++nextId,
-    //                 phones: [],
-    //                 addresses: [],
-    //                 emails: [],
-    //             };
-    //             const form = e.target;
-    //             var formData = new FormData(form);
-
-                
-    //             for(let input of formData.entries()) {
-    //                 if (input[0][0] == 'p') {
-    //                     contact.phones.push(input[1])
-    //                 }
-                    
-    //                 if (input[0][0] == 'a') {
-    //                     contact.addresses.push(input[1])
-    //                 }
-                    
-    //                 if (input[0][0] == 'e') {
-    //                     contact.emails.push(input[1])
-    //                 }
-                    
-    //                 console.log(input[0], input[1]); //Выведет в консоль всю форму в виде "КЛЮЧ ЗНАЧЕНИЕ"
-    //             }
-    //             console.log(contact);
-    //             this.contacts.push(contact);
-    //             console.log(this.contacts);
-    //             form.reset();
-                
-    //             // this.addInputs = {
-    //             //     phone: [], ip: 0,
-    //             //     address: [], id: 0,
-    //             //     email: [], im: 0,
-    //             // }
-    //             e.preventDefault();
-    //         }
-    //     }
-    // });
-
-    // const modalEdit = new Vue({
-    //     el: '#editContact',
-    //     data: {
-    //         editer: false,
-    //         idContact: 0,
-    //         contacts,
-    //         contact: {},
-    //         addInputs: modalAdd.addInputs
-    //     },
-    //     methods: {
-            // addInputPhone() {
-            //     // this.addInputs.phone.push(++this.addInputs.ip);
-            //     this.contact.phones.push('');
-            //     // this.refresh('phone');
-            // },
-
-    //         addInputAddress(){
-    //             this.addInputs.address.push(this.addInputs.id++);
-    //             this.refresh('address');
-    //         },
-    //         addInputEmail(){
-    //             this.addInputs.email.push(this.addInputs.im++);
-    //             this.refresh('email');
-    //         },
-
-    //         delInputPhone(e) {
-    //             console.log(e.target.id);
-    //             // this.addInputs.phone.splice(e.target.id, 1);
-    //             this.contact.phones.splice(e.target.id, 1);
-    //             // this.addInputs.ip--;
-    //             // this.refresh('phone');
-    //         },
-            
-    //         delInputAddress(e) {
-    //             this.addInputs.address.splice(e.target.id, 1);
-    //             this.addInputs.id--;
-    //             this.refresh('address');
-    //         },
-    //         delInputEmail(e) {
-    //             this.addInputs.email.splice(e.target.id, 1);
-    //             this.addInputs.im--;
-    //             this.refresh('email');
-    //         },
-
-    //         refresh(t) {
-    //             for (let i = 1; i <= this.addInputs[t]["length"]; i++) {
-    //                 this.addInputs[t][i-1] = i+1;
-    //             }
-    //         },
-            // checkEdit(e) {
-
-            //     const contact = {
-            //         id: this.idContact,
-            //         phones: [],
-            //         addresses: [],
-            //         emails: [],
-            //     };
-
-            //     const form = e.target;
-            //     var formData = new FormData(form);
-                
-            //     for(let input of formData.entries()) {
-            //         if (input[0][0] == 'p') {
-            //             contact.phones.push(input[1])
-            //         }
-                    
-            //         if (input[0][0] == 'a') {
-            //             contact.addresses.push(input[1])
-            //         }
-                    
-            //         if (input[0][0] == 'e') {
-            //             contact.emails.push(input[1])
-            //         }
-                    
-            //         console.log(input[0], input[1]); //Выведет в консоль всю форму в виде "КЛЮЧ ЗНАЧЕНИЕ"
-            //     }
-            //     console.log(contact);
-            //     arr.push(contact);
-            //     this.contacts[contact.id-1] = contact
-            //     this.editer = true;
-            //     console.log(this.editer);
-            //     console.log(this.contacts);
-            //     e.preventDefault();
-            // }
-
-    //     }
-    // });

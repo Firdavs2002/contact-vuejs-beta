@@ -5,7 +5,27 @@ body > .container {
 .header {
   background: #333;
   padding: 20px;
-  border-radius: 5px 5px 0 0;
+  border-radius: 15px 15px 0 0;
+}
+
+.modal-header {
+  align-items: center;
+}
+
+button.close {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  margin: 0 !important;
+  padding: 0 !important;
+  justify-content: center;
+}
+
+button.close:hover {
+  color: #fff
 }
 
 form.form-contact {
@@ -18,7 +38,11 @@ form.form-contact {
 .form-contact .form-group {
   flex: 1 80%;
   display: flex;
-  margin: 10px 0;
+  margin: 0;
+}
+
+.form-group.form-modal {
+  margin: 10px 0 !important;
 }
 
 .form-contact .form-group input {
@@ -33,8 +57,17 @@ form.form-contact {
   margin-left: 10px;
 }
 
+#addContact .modal-footer {
+  justify-content: center;
+  flex-direction: column;
+}
+
 .modal-footer {
   justify-content: space-between;
+}
+
+#addContact .modal-footer label.btn {
+  width: 100%;
 }
 
 button.dropdown-toggle {
